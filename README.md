@@ -1,4 +1,4 @@
-# 🧭 Pathfinding Visualizer
+# Pathfinding Visualizer
 
 An interactive visualizer for four classic graph-search algorithms — **BFS, DFS,
 Dijkstra, and A\*** — with the algorithms **and the min-heap priority queue that
@@ -13,7 +13,7 @@ grid cell by cell, then trace the shortest path.
 > expands far fewer nodes. Run each algorithm on the same maze and compare the
 > **"nodes visited"** counter to see it directly.
 
-## ✨ Features
+## Features
 - **Four algorithms:** BFS, DFS, Dijkstra, A\* (Manhattan heuristic)
 - **From-scratch data structures:** a binary **min-heap** priority queue drives
   Dijkstra and A\*; a queue drives BFS; a stack drives DFS
@@ -21,7 +21,7 @@ grid cell by cell, then trace the shortest path.
 - **Live metrics:** nodes visited, final path length, and search status
 - **Animated search + path**, with adjustable speed and a random-wall generator
 
-## 🧠 The DSA, and why each structure
+## The DSA, and why each structure
 
 | Algorithm | Data structure | Finds shortest path? | Idea |
 |-----------|----------------|----------------------|------|
@@ -36,7 +36,7 @@ efficiently. It uses **lazy deletion** (skip already-finalized nodes when popped
 instead of a decrease-key operation, which keeps the structure simple while
 staying correct.
 
-## ⏱️ Complexity
+## Complexity
 
 Let `V` = cells, `E` = edges (≤ 4·V on a 4-connected grid).
 
@@ -50,7 +50,7 @@ A\* is optimal **and** faster than Dijkstra in practice because the Manhattan
 heuristic is *admissible* (never overestimates), so it never expands a node it
 can prove can't be on the best path.
 
-## 🚀 Run it
+## Run it
 
 It's fully static — no build step, no dependencies.
 
@@ -63,7 +63,7 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
-## 🗂️ Project structure
+## Project structure
 
 ```
 pathfinding-visualizer/
@@ -74,7 +74,7 @@ pathfinding-visualizer/
     └── app.js          # grid model, rendering, interaction, animation
 ```
 
-## 🧪 Try this
+## Try this
 1. Click **Add Walls** to scatter obstacles.
 2. Run **A\***, note the *nodes visited*.
 3. Click **Reset Board**… actually — run **Dijkstra** on the *same* maze first
@@ -82,7 +82,7 @@ pathfinding-visualizer/
    goal. Same shortest path, very different amount of work. That contrast is the
    whole point.
 
-## 📌 Notes / possible extensions
+## Notes / possible extensions
 - Add **weighted terrain** (Dijkstra/A\* already handle non-uniform costs).
 - Add **maze-generation** algorithms (recursive division, randomized Prim's).
 - Allow **diagonal movement** (swap the neighbour function + use Euclidean/octile heuristic).
