@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathfinding Visualizer — C++ / WebAssembly</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>Pathfinding Visualizer</h1>
+    <p>BFS · DFS · Dijkstra · A* — the search engine and min-heap are C++, compiled to WebAssembly and run in your browser.</p>
+  </div>
+  <span class="engine" id="engine"><span class="dot"></span><span id="engine-text">loading C++ engine…</span></span>
+</header>
+
+<div class="toolbar">
+  <span><label for="algo">Algorithm</label>
+    <select id="algo">
+      <option value="astar">A* Search</option>
+      <option value="dijkstra">Dijkstra</option>
+      <option value="bfs">Breadth-First Search</option>
+      <option value="dfs">Depth-First Search</option>
+    </select>
+  </span>
+  <span><label for="speed">Speed</label>
+    <select id="speed">
+      <option value="fast">Fast</option>
+      <option value="medium" selected>Medium</option>
+      <option value="slow">Slow</option>
+    </select>
+  </span>
+  <button id="run" class="primary" disabled>▶ Visualize</button>
+  <button id="maze" disabled>Add Walls</button>
+  <button id="clear-walls" disabled>Clear Walls</button>
+  <button id="reset" disabled>Reset Board</button>
+</div>
+
+<div class="legend">
+  <span><i class="swatch start"></i> Start</span>
+  <span><i class="swatch finish"></i> Finish</span>
+  <span><i class="swatch wall"></i> Wall</span>
+  <span><i class="swatch visited"></i> Visited</span>
+  <span><i class="swatch path"></i> Shortest path</span>
+</div>
+
+<div class="stats">
+  <span>Nodes visited: <b id="stat-visited">—</b></span>
+  <span>Path length: <b id="stat-path">—</b></span>
+  <span>Status: <b id="stat-status">Loading…</b></span>
+</div>
+
+<div class="board-wrap">
+  <div id="board" role="grid" aria-label="pathfinding grid"></div>
+</div>
+
+<footer>
+  Click and drag to draw walls, or drag the green/red squares to move start and finish.
+  Every search is computed by the C++ engine (<code>src/Pathfinder.cpp</code>) running as WebAssembly — the JavaScript here only draws the grid and animates the result the engine returns.
+</footer>
+
+<!-- Emscripten-generated glue (creates window.PathfinderModule). Build with ./build_wasm.sh -->
+<script src="pathfinder.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
