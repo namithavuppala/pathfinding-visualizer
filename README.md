@@ -1,27 +1,27 @@
 # Pathfinding Visualizer (C++)
 
 A terminal pathfinding visualizer implementing four classic graph-search
-algorithms — **BFS, DFS, Dijkstra, and A\*** — in modern C++ (C++17), with the
+algorithms — **BFS, DFS, Dijkstra, and A\***  in modern C++ (C++17), with the
 **binary min-heap priority queue that powers Dijkstra and A\* implemented from
 scratch** (a templated `MinHeap<T, Compare>`, no `std::priority_queue`).
 
 Run it and watch each algorithm search a randomly-generated maze cell by cell,
-then trace the shortest path — or run all four on the same maze and compare how
+then trace the shortest path or run all four on the same maze and compare how
 many nodes each one explores.
 
 ## The DSA, and why each structure
 
 | Algorithm | Data structure | Shortest path? | Idea |
 |-----------|----------------|----------------|------|
-| **BFS**   | Queue (FIFO)   | ✅ (unweighted) | Explore in rings of equal distance |
-| **DFS**   | Stack (LIFO)   | ❌              | Dive deep down one branch first |
-| **Dijkstra** | Custom min-heap | ✅ (weighted) | Always expand the closest node |
-| **A\***   | Min-heap on `f = g + h` | ✅ (weighted) | Dijkstra guided toward the goal |
+| **BFS**   | Queue (FIFO)   |  (unweighted) | Explore in rings of equal distance |
+| **DFS**   | Stack (LIFO)   | -             | Dive deep down one branch first |
+| **Dijkstra** | Custom min-heap | (weighted) | Always expand the closest node |
+| **A\***   | Min-heap on `f = g + h` | (weighted) | Dijkstra guided toward the goal |
 
 The templated **`MinHeap`** in [`include/MinHeap.hpp`](include/MinHeap.hpp) is the
 heart of the project: a binary heap giving `O(log n)` push/pop. Dijkstra and A\*
 use **lazy deletion** — a node can be pushed again when a shorter route is found,
-and stale copies are skipped on pop — so there's no need for a decrease-key
+and stale copies are skipped on pop so there's no need for a decrease-key
 operation.
 
 ## Sample output (`./pathfinder all`)
